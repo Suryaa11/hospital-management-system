@@ -5,7 +5,7 @@ metadata:
   namespace: fitness-ns
 spec:
   parentRefs:
-    gatewayClassName: surya-gateway
+    name: surya-gateway
   rules:
     - matches: 
       - path: 
