@@ -21,32 +21,39 @@ spec:
         env:
         - name: MONGO_URI
           valueFrom:
-            name: hospital-config
-            key: MONGO_URI
+            configMapKeyRef:
+              name: hospital-config
+              key: MONGO_URI
         - name: PORT
           valueFrom:
-            name: hospital-config
-            key: PORT
+            configMapKeyRef:
+              name: hospital-config
+              key: PORT
         - name: NODE_ENV
           valueFrom:
-            name: hospital-config
-            key: NODE_ENV
+            configMapKeyRef:
+              name: hospital-config
+              key: NODE_ENV
         - name: SESSION_SECRET
           valueFrom:
-            name: hospital-config
-            key: SESSION_SECRET
+            configMapKeyRef:
+              name: hospital-config
+              key: SESSION_SECRET
         - name: JWT_SECRET
           valueFrom:
-            name: hospital-config
-            key: JWT_SECRET
+            configMapKeyRef:
+              name: hospital-config
+              key: JWT_SECRET
         - name: ADMIN_USERNAME
           valueFrom:
-            name: hospital-config
-            key: ADMIN_USERNAME
+            configMapKeyRef:
+              name: hospital-config
+              key: ADMIN_USERNAME
         - name: ADMIN_PASSWORD
           valueFrom:
-            name: hospital-config
-            key: ADMIN_PASSWORD
+            configMapKeyRef:
+              name: hospital-config
+              key: ADMIN_PASSWORD
 ---
 apiVersion: v1
 kind: Service
