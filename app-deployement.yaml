@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hospital-app
+  namespace: fitness-ns
 spec:
   replicas: 2
   selector:
@@ -19,28 +20,43 @@ spec:
         - containerPort: 5000
         env:
         - name: MONGO_URI
-          value: "mongodb://mongodb-service:27017/hospital_management"
+          valueFrom:
+            name: hospital-config
+            key: MONGO_URI
         - name: PORT
-          value: "5000"
+          valueFrom:
+            name: hospital-config
+            key: PORT
         - name: NODE_ENV
-          value: "production"
+          valueFrom:
+            name: hospital-config
+            key: NODE_ENV
         - name: SESSION_SECRET
-          value: "hospital-secret-2024"
+          valueFrom:
+            name: hospital-config
+            key: SESSION_SECRET
         - name: JWT_SECRET
-          value: "jwt-secret-2024"
+          valueFrom:
+            name: hospital-config
+            key: JWT_SECRET
         - name: ADMIN_USERNAME
-          value: "admin"
+          valueFrom:
+            name: hospital-config
+            key: ADMIN_USERNAME
         - name: ADMIN_PASSWORD
-          value: "admin123"
+          valueFrom:
+            name: hospital-config
+            key: ADMIN_PASSWORD
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: hospital-service
+  namespace: fitness-ns
 spec:
   selector:
     app: hospital-app
   ports:
   - port: 80
     targetPort: 5000
-  type: LoadBalancer
+  type: ClusterIP
