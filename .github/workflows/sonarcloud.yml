@@ -26,8 +26,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with: 
-          command: monitor
-          args: --file=backend/package.json
+          command: test
+          args: --file=backend/package.json --severity-threshold=low
       - name: Quality Gate Check
         uses: SonarSource/sonarqube-quality-gate-action@v1
         id: qualitygate
