@@ -25,7 +25,7 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
+        with: 
           command: monitor
           args: --file=backend/package.json
       - name: Quality Gate Check
