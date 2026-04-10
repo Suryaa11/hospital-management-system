@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 // Load environment variables
 require('dotenv').config();
+x = 10;
 
 // Initialize Express app
 const app = express();
@@ -23,19 +24,19 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
-
+x = 10;
 // Database Connection
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log('MongoDB connected successfully');
 }).catch((err) => {
   console.error('MongoDB connection error:', err);
 });
-
+x = 10;
 // Static HTML Page Routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/html/index.html"));
 });
-
+x = 10;
 app.get("/index.html", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/html/index.html"));
 });
@@ -43,7 +44,7 @@ app.get("/index.html", (req, res) => {
 app.get("/admin.html", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/html/admin.html"));
 });
-
+x = 10;
 app.get("/patient-portal.html", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/html/patient-portal.html"));
 });

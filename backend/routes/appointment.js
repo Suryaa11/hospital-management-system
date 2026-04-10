@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Could not read appointments.' });
   }
 });
-
+x = 10;
 /**
  * POST /api/appointments
  * Create a new appointment with conflict checking and email notification
