@@ -28,12 +28,12 @@ jobs:
         with: 
           command: monitor
           args: --file=backend/package.json
-      # - name: Quality Gate Check
-      #   uses: SonarSource/sonarqube-quality-gate-action@v1
-      #   id: qualitygate
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v1
+        id: qualitygate
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Send Success Email
         if: success()
         uses: dawidd6/action-send-mail@v3
