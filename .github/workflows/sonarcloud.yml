@@ -49,7 +49,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "Build Failed"
           body: "Quality Gate failed. Check SonarQube."
-          to: ${{ secrets.MAIL_TO }}
+          to: ${{ secrets.MAIL_TO }}   
           from: GitHub Actions
 
 
